@@ -1,0 +1,13 @@
+.links{
+    text-decoration: none;
+    color: white;
+}
+
+.card{
+    margin: 35px;
+}
+
+.divBotones{
+    display: flex;
+    justify-content: space-between;
+}

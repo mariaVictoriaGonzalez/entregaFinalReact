@@ -1,0 +1,8 @@
+.card{
+    width: 500px;
+}
+
+.contenedorCard{
+    display: flex;
+    justify-content: center;
+}
