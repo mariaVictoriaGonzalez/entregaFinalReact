@@ -19,7 +19,7 @@ const cartContext =useContext(CartContext)
                         </Card.Text>
                         <div className='divBotones'>
                         <Button variant="secondary"><Link key={id} to={`/Item/${id}`} className='links'>Detalle</Link></Button>
-                        <Button variant="secondary" onClick={()=>{ cartContext.addToCart ([{id,price,title}])}} >Comprar</Button>
+                        <Button variant="secondary" onClick={()=>{ cartContext.addToCart ([{id,price,title}]), cartContext.addCartQuantity([{id,price,title}])}} >Comprar</Button>
                         </div>
                     </Card.Body>
                 </Card>

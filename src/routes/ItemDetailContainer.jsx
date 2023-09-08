@@ -31,6 +31,7 @@ function ItemDetailContainer() {
 
     const cartContext = useContext(CartContext);
     const cartList = cartContext.cartList;
+    const cartQuantity = cartContext.cartQuantity
 
     const handleDecrement = () => {
         if (counter > 1) {
@@ -39,7 +40,7 @@ function ItemDetailContainer() {
     };
 
     const handleIncrement = () => {
-        setCounter(counter + 1);
+        setCounter(counter + 1);        
     };
 
     const addToCart = () => {
@@ -49,7 +50,7 @@ function ItemDetailContainer() {
             price: productDetail.price,
             quantity: counter,
         };
-        cartList.push(itemToAdd);
+        cartList.push(itemToAdd);                
     };
 
     return (
@@ -70,7 +71,7 @@ function ItemDetailContainer() {
                                 -
                             </Button>
                             <span>{counter}</span>
-                            <Button className="btn btn-primary" onClick={handleIncrement}>
+                            <Button className="btn btn-primary" onClick={ ()=>{handleIncrement, cartContext.addCartQuantity([{id,price,title}])} }>
                                 +
                             </Button>
                         </div>
