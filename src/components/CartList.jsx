@@ -3,6 +3,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { CartContext } from '../context/cartContext';
 import { useContext } from 'react';
 import { Alert, Button } from 'react-bootstrap';
+import "./CartList.css"
 
 function CartList() {
     const cartContext = useContext(CartContext);
@@ -17,8 +18,9 @@ function CartList() {
     return (
         <>
             {cartList.length? cartList.map((product) => (
-                <ListGroup horizontal key={product.id} className="my-2">
-                    <ListGroup.Item> {product.title} </ListGroup.Item>
+                <div key={product.id} className='divCartList' >
+                <ListGroup horizontal  className="my-2">
+                    <ListGroup.Item className='listName' > {product.title} </ListGroup.Item>
                     <ListGroup.Item> ${product.price} </ListGroup.Item>
                     <ListGroup.Item>
                         <Button onClick={() => handleDeleteItem(product)}>
@@ -26,14 +28,18 @@ function CartList() {
                         </Button>
                     </ListGroup.Item>
                 </ListGroup>
+
+                </div>
             )): <Alert variant='danger'>
                 There're no products in your cart!
             </Alert>
         }
-            <ListGroup horizontal className="my-2">
+        <div className='divPrice'>
+        <ListGroup horizontal className="my-2"  >
                 <ListGroup.Item> Total price: </ListGroup.Item>
                 <ListGroup.Item> ${total.toFixed(2)} </ListGroup.Item>
             </ListGroup>
+        </div>
         </>
     );
 }

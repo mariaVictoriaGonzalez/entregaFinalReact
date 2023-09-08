@@ -48,15 +48,10 @@ function CartContextProvider({ children }) {
             },
             items: cartList,
             totalPrice: calculateTotal(cartList),
-        };
-        
-        try {
+        };        
             const docRef = await addDoc(collection(firestore, "orders"), order);
             setOrderId(docRef.id);
             clearCart();
-        } catch (error) {
-            console.error("Error adding order:", error);
-        }
     }
 
     return (
@@ -70,6 +65,7 @@ function CartContextProvider({ children }) {
                 deleteItem: deleteItem,
                 calculateTotal: calculateTotal,
                 purchaseCart: purchaseCart,
+                orderId:orderId,
             }}
         >
             {children}

@@ -20,7 +20,7 @@ function ItemDetailContainer() {
         getDoc(productChosen)
             .then((snapshot) => {
                 if (snapshot.exists()) {
-                    setProductDetail({ id: snapshot, ...snapshot.data() });
+                    setProductDetail({ id: params.id, ...snapshot.data() });
                 } else {
                     console.log("Product not found.");
                 }
@@ -31,7 +31,6 @@ function ItemDetailContainer() {
 
     const cartContext = useContext(CartContext);
     const cartList = cartContext.cartList;
-    const cartQuantity = cartContext.cartQuantity
 
     const handleDecrement = () => {
         if (counter > 1) {
@@ -40,7 +39,9 @@ function ItemDetailContainer() {
     };
 
     const handleIncrement = () => {
-        setCounter(counter + 1);        
+        setCounter(counter + 1);
+        addToCart();
+        cartContext.addCartQuantity();
     };
 
     const addToCart = () => {
@@ -50,7 +51,10 @@ function ItemDetailContainer() {
             price: productDetail.price,
             quantity: counter,
         };
-        cartList.push(itemToAdd);                
+        cartList.push(itemToAdd);
+        for (let i = 0; i < counter; i++) {
+            cartContext.addToCart(itemToAdd);
+        }            
     };
 
     return (
@@ -71,12 +75,12 @@ function ItemDetailContainer() {
                                 -
                             </Button>
                             <span>{counter}</span>
-                            <Button className="btn btn-primary" onClick={ ()=>{handleIncrement, cartContext.addCartQuantity([{id,price,title}])} }>
+                            <Button className="btn btn-primary" onClick={handleIncrement}>
                                 +
                             </Button>
                         </div>
                         <Button className="btn btn-success" onClick={addToCart}>
-                            Añadir al Carrito
+                            Add to cart
                         </Button>
                     </Card.Body>
                 </Card>

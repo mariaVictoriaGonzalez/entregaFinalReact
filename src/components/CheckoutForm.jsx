@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { CartContext } from '../context/cartContext';
 import { Alert } from 'react-bootstrap';
+import "./CheckoutForm.css"
 
 function CheckoutForm() {
     const cartContext = useContext(CartContext);
@@ -20,13 +21,13 @@ function CheckoutForm() {
         event.preventDefault()
         cartContext.purchaseCart(cartContext.cartList, { name, lastname, phone, email });
     }
-    debugger
+    
 
     return (
         
         <>
         {cartList.length?
-        <Form>
+        <Form className='divForm'>
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="formGridName">
                     <Form.Label>Name</Form.Label>

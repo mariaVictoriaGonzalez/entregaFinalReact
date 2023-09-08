@@ -1,0 +1,21 @@
+.divCartList{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.listName{
+    width: 450px;
+    display: flex;
+    justify-content: center;
+}
+
+.divPrice{
+    display: flex;
+    justify-content: center;
+}
+
+.cartListButtons{
+    display: flex;
+    justify-content: space-around;
+}

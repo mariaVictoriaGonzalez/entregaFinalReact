@@ -5,7 +5,7 @@ import './Item.css'
 import { useContext } from 'react';
 import { CartContext } from '../context/cartContext';
 
-function Item({title, id, price, image }) {
+function Item({title, id, price, image, quantity }) {
 const cartContext =useContext(CartContext)
 
     return (
@@ -18,8 +18,8 @@ const cartContext =useContext(CartContext)
                             ${price}
                         </Card.Text>
                         <div className='divBotones'>
-                        <Button variant="secondary"><Link key={id} to={`/Item/${id}`} className='links'>Detalle</Link></Button>
-                        <Button variant="secondary" onClick={()=>{ cartContext.addToCart ([{id,price,title}]), cartContext.addCartQuantity([{id,price,title}])}} >Comprar</Button>
+                        <Button variant="secondary"><Link key={id} to={`/Item/${id}`} className='links'>Detail</Link></Button>
+                        <Button variant="secondary" onClick={()=>{ cartContext.addToCart ([{id,price,title}]), cartContext.addCartQuantity([{id,price,title}])}} >Add to cart</Button>
                         </div>
                     </Card.Body>
                 </Card>
