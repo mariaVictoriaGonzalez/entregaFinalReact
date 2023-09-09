@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { LuShoppingCart } from "react-icons/lu";
-import './CartWidget.css'
 import { CartContext } from '../context/cartContext';
 import { Link } from 'react-router-dom';
 

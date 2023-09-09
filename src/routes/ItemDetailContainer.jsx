@@ -1,10 +1,13 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React, { useContext, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import "./ItemDetailContainer.css";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { Button } from "react-bootstrap";
 import { CartContext } from "../context/cartContext";
+import '../components/Item.css'
+
+
 
 function ItemDetailContainer() {
     const params = useParams();
@@ -53,7 +56,7 @@ function ItemDetailContainer() {
         };
         cartList.push(itemToAdd);
         for (let i = 0; i < counter; i++) {
-            cartContext.addToCart(itemToAdd);
+            cartContext.addToCartDetail(itemToAdd);
         }            
     };
 
@@ -79,8 +82,7 @@ function ItemDetailContainer() {
                                 +
                             </Button>
                         </div>
-                        <Button className="btn btn-success" onClick={addToCart}>
-                            Add to cart
+                        <Button className="btn btn-success"><Link to={"/cart"} className="links">Add to cart</Link>                            
                         </Button>
                     </Card.Body>
                 </Card>

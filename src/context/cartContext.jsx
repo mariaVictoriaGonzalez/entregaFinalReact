@@ -14,6 +14,11 @@ function CartContextProvider({ children }) {
         setCartList([...cartList, ...product])
     }
 
+    const addToCartDetail = (product) => {
+        setCartList([...cartList, product])
+    }
+
+
     const addCartQuantity = (cartQuantity) => {
         setCartQuantity(cartList.length + 1)
     }
@@ -29,6 +34,7 @@ function CartContextProvider({ children }) {
             const newArray = cartList.slice()
             newArray.splice(index, 1)
             setCartList(newArray)
+            setCartQuantity(cartQuantity-1)
         }
     }
 
@@ -66,6 +72,7 @@ function CartContextProvider({ children }) {
                 calculateTotal: calculateTotal,
                 purchaseCart: purchaseCart,
                 orderId:orderId,
+                addToCartDetail:addToCartDetail
             }}
         >
             {children}
