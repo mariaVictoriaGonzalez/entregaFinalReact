@@ -9,7 +9,6 @@ function CartList() {
     const cartContext = useContext(CartContext);
     const cartList = cartContext.cartList;
 
-    // Función para agrupar productos por ID y contar cantidades
     const groupProducts = (cartItems) => {
         const grouped = {};
         cartItems.forEach((product) => {
@@ -24,7 +23,6 @@ function CartList() {
 
     const groupedCartList = groupProducts(cartList);
 
-    // Calcular el total teniendo en cuenta las cantidades
     const total = groupedCartList.reduce((accumulator, product) => {
         return accumulator + product.price * product.quantity;
     }, 0);
